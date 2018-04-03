@@ -3,10 +3,20 @@
     padding: 0px;
     }
     
-    #map {
-    background: url("../bomberman_js/img/map.png");
+#cadre {
+    background: url("../bomberman_js/img/cadre.png") no-repeat;
     height: 650px;
     width: 950px;
+    position: absolute;
+    margin: auto;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+    #map {
+    background: url("../bomberman_js/img/map.png");
+    height: 550px;
+    width: 850px;
     margin: auto;
     position: absolute;
     }
@@ -15,7 +25,7 @@
     font-size: 35px;
     font-family: arial;
     font-weight: bold;
-    height: 100px;
+    height: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
