@@ -3,21 +3,26 @@
     padding: 0px;
     }
     
+body {
+    display: flex;
+    justify-content: center;
+}
+
 #cadre {
     background: url("../bomberman_js/img/cadre.png") no-repeat;
     height: 650px;
     width: 950px;
     position: absolute;
-    margin: auto;
     padding-top: 50px;
     padding-left: 50px;
+    margin-top: 90px;
+
 }
 
     #map {
     background: url("../bomberman_js/img/map.png");
     height: 550px;
     width: 850px;
-    margin: auto;
     position: absolute;
     }
     
