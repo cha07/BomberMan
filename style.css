@@ -8,6 +8,11 @@ body {
     justify-content: center;
 }
 
+header {
+    margin: auto;
+    position: absolute;
+}
+
 #cadre {
     background: url("../bomberman_js/img/cadre.png") no-repeat;
     height: 650px;
@@ -16,7 +21,6 @@ body {
     padding-top: 50px;
     padding-left: 50px;
     margin-top: 90px;
-
 }
 
 #map {
@@ -32,11 +36,11 @@ h1 {
     font-weight: bold;
     height: 90px;
     display: flex;
-    justify-content: center;
     align-items: center;
     }
 
     #hero {
+        background-image: url("../bomberman_js/img/h-static.png");
         position: absolute;
         width: 50px;
         height: 50px;

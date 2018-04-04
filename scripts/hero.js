@@ -73,14 +73,14 @@ document.addEventListener("keydown", function (e) {
 
                 if (grille[posBlockTop - 1][posBlockLeft] == 1) {
                     hero.style.top = (posBlockTop - 1) * 50 + "px";
-                    hero.style.backgroundImage = "url('../bomberman_js/img/h.png')";
+                    hero.style.backgroundImage = "url('img/h-top.png')";
                 }
                 break;
 
             case 39:
                 if (grille[posBlockTop][posBlockLeft + 1] == 1) {
                     hero.style.left = (posBlockLeft + 1) * 50 + "px";
-                    hero.style.backgroundImage = "url('../bomberman_js/img/h-d.png')";
+                    hero.style.backgroundImage = "url('img/h-d.png')";
                 }
                 break;
 
@@ -88,14 +88,14 @@ document.addEventListener("keydown", function (e) {
 
                 if (grille[posBlockTop + 1][posBlockLeft] == 1) {
                     hero.style.top = (posBlockTop + 1) * 50 + "px";
-                    hero.style.backgroundImage = "url('../medias/bomberman.svg')";
+                    hero.style.backgroundImage = "url('img/h.png')";
                 }
                 break;
 
             case 37:
                 if (grille[posBlockTop][posBlockLeft - 1] == 1) {
                     hero.style.left = (posBlockLeft - 1) * 50 + "px";
-                    hero.style.backgroundImage = "url('../medias/bombermanleft.svg')";
+                    hero.style.backgroundImage = "url('img/h-g.png')";
                 }
                 break;
 
@@ -103,7 +103,7 @@ document.addEventListener("keydown", function (e) {
                 if (posBomberman === 0) {
                     bomb.style.left = bombermanLeft + "px";
                     bomb.style.top = bombermanTop + "px";
-                    bomb.style.backgroundImage = "url('../medias/bomb.svg')";
+                    bomb.style.backgroundImage = "url('img/bomb.png')";
                     bomb.style.display = "block";
 
                     var audio = new Audio('../medias/bombdrop.wav');
