@@ -1,8 +1,8 @@
 * {
     margin: 0px;
     padding: 0px;
-    }
-    
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -19,14 +19,14 @@ body {
 
 }
 
-    #map {
+#map {
     background: url("../bomberman_js/img/map.png");
     height: 550px;
     width: 850px;
     position: relative;
-    }
-    
-    h1 {
+}
+
+h1 {
     font-size: 35px;
     font-family: arial;
     font-weight: bold;
