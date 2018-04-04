@@ -100,10 +100,10 @@ document.addEventListener("keydown", function (e) {
                 break;
 
             case 32:
-                if (posBomberman === 0) {
-                    bomb.style.left = bombermanLeft + "px";
-                    bomb.style.top = bombermanTop + "px";
-                    bomb.style.backgroundImage = "url('img/bomb.png')";
+                if (posHero === 0) {
+                    bomb.style.left = heroLeft + "px";
+                    bomb.style.top = heroTop + "px";
+                    bomb.style.backgroundImage = "url('img/bomb_item.png')";
                     bomb.style.display = "block";
 
                     var audio = new Audio('../medias/bombdrop.wav');
