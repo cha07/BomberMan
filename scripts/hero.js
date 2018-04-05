@@ -4,17 +4,17 @@ var map = document.querySelector('#map');
 
 var grille = [
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-    [4, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4],
-    [4, 1, 2, 1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 2, 3, 2, 3, 4],
-    [4, 1, 1, 3, 1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4],
-    [4, 1, 2, 1, 2, 3, 2, 3, 2, 1, 2, 3, 2, 1, 2, 1, 2, 3, 4],
-    [4, 1, 1, 1, 1, 3, 1, 3, 3, 3, 3, 3, 1, 1, 1, 3, 3, 3, 4],
-    [4, 3, 2, 1, 2, 1, 2, 3, 2, 1, 2, 1, 2, 1, 2, 1, 2, 3, 4],
-    [4, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 4],
-    [4, 3, 2, 1, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 1, 2, 1, 4],
-    [4, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 4],
-    [4, 3, 2, 1, 2, 1, 2, 3, 2, 3, 2, 3, 2, 1, 2, 1, 2, 1, 4],
-    [4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4],
+    [4, 1, 1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 4],
+    [4, 1, 2, 3, 2, 1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 2, 1, 4],
+    [4, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 4],
+    [4, 3, 2, 3, 2, 1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 2, 1, 4],
+    [4, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 4],
+    [4, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 2, 1, 4],
+    [4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 4],
+    [4, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 2, 1, 4],
+    [4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 4],
+    [4, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 2, 1, 4],
+    [4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 4],
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]];
 
 function afficherMap() {
@@ -183,7 +183,7 @@ function random() {
     }
 } // FIN IF ---------------------------------------------------------
 
-setInterval(random, 50);
+setInterval(random, 150);
 
 //Tuer l'ennemie 
 
@@ -252,6 +252,7 @@ function boom(){
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    killPlayer(explosion);
     killMorgane(explosion);
     breakBlock(explosion);
     
@@ -265,6 +266,7 @@ function boom(){
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    killPlayer(explosion);
     killMorgane(explosion);
     breakBlock(explosion);
     
@@ -278,6 +280,7 @@ function boom(){
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    killPlayer(explosion);
     killMorgane(explosion);
     breakBlock(explosion);
     
@@ -331,6 +334,30 @@ function boom(){
     
                 badgirl.style.display = "none";
                 playerwin.style.display = "block";
+            }
+        }
+    }
+
+    function killPlayer(explosion) {
+        var posHeroLeft =  hero.offsetLeft;
+        var posHeroTop = hero.offsetTop;
+        var posBombLeft = bomb.offsetLeft;
+        var posBombTop = bomb.offsetTop;
+        var explosionLeft = explosion.offsetLeft;
+        
+        var element = document.getElementsByClassName('explosion');
+        for (var i = element.length - 1; i >= 0; i--) {
+    
+            if ((posBombLeft === posHeroLeft) && (posBombTop === posHeroTop)) {
+    
+                hero.style.display = "none";
+                playerlose.style.display = "block";
+                
+    
+            } else if ((explosion.offsetTop === posHeroTop) && (explosion.offsetLeft === posHeroLeft)) {
+    
+                hero.style.display = "none";
+                playerlose.style.display = "block";
             }
         }
     }
