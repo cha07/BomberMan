@@ -69,6 +69,8 @@ function afficherMap() {
     }
 }
 
+// deplacement hero ----------------------------------------------
+
 afficherMap();
 
 var hero = document.querySelector('#hero');
@@ -130,7 +132,7 @@ document.addEventListener("keydown", function (e) {
     }
 });
 
-// déplacement Ennemie
+// déplacement Ennemie --------------------------------------------
 const badgirl = document.querySelector("#mechante");
 
 function random() {
@@ -175,11 +177,37 @@ function random() {
 
         } 
     }
-} // FIN IF
+} // FIN IF ---------------------------------------------------------
 
 setInterval(random, 300);
 
-// bombe qui explose pas x)
+//Tuer l'ennemie 
+
+function killMorgane(explosion) {
+    var posBadgirlLeft =  badgirl.offsetLeft;
+    var posBadgirlTop = badgirl.offsetTop;
+    var posBombLeft = bomb.offsetLeft;
+    var posBombTop = bomb.offsetTop;
+    var explosionLeft = explosion.offsetLeft;
+    
+    var element = document.getElementsByClassName('explosion');
+    for (var i = element.length - 1; i >= 0; i--) {
+
+        if ((posBombLeft === posBadgirlLeft) && (posBombTop === posBadgirlTop)) {
+
+            badgirl.style.display = "none";
+            playerwin.style.display = "block";
+            
+
+        } else if ((explosion.offsetTop === posBadgirlTop) && (explosion.offsetLeft === posBadgirlLeft)) {
+
+            badgirl.style.display = "none";
+            playerwin.style.display = "block";
+        }
+    }
+}
+
+// bombe ------------------------------------------------------------
 
 function suppexplosion() {
 
@@ -207,6 +235,7 @@ function boom(){
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    killMorgane(explosion);
     breakBlock(explosion);
 
     } if (grille[posBombTop + 1][posBombLeft] == 3 || grille[posBombTop + 1][posBombLeft] == 1) {
@@ -219,6 +248,7 @@ function boom(){
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    killMorgane(explosion);
     breakBlock(explosion);
     
     } if (grille[posBombTop][posBombLeft - 1] == 3 || grille[posBombTop][posBombLeft - 1] == 1) {
@@ -231,6 +261,7 @@ function boom(){
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    killMorgane(explosion);
     breakBlock(explosion);
     
     } if (grille[posBombTop][posBombLeft + 1] == 3 || grille[posBombTop][posBombLeft + 1] == 1) {
@@ -243,10 +274,13 @@ function boom(){
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    killMorgane(explosion);
     breakBlock(explosion);
     
     }
 }
+
+// explosion mur bois -----------------------------------------------------------
 
     function breakBlock(explosion) {
 
@@ -271,3 +305,27 @@ function boom(){
             }
         }
     }
+
+    var lifeCount = 3;
+var audio5 = new Audio('../medias/gameover.mp3');
+
+function touchMonster(e) {
+    var posHeroLeft = bomberman.offsetLeft / 50;
+    var posHeroTop = bomberman.offsetTop / 50;
+    var posBadgirlLeft = badgirl.offsetLeft / 50;
+    var posBadgirlTop = badgirl.offsetTop / 50;
+
+    if (posHeroTop == posBadgirlTop && posHeroLeft == posBadgirlLeft) {
+        lifeCount = lifeCount - 1;
+        document.getElementsByClassName('heart' + lifeCount)[0].style.display = "none";
+    }
+
+    if (lifeCount == 0) {
+        gameover.style.display = "block";
+        clearInterval(refreshIntervalId);
+        hero.style.backgroundImage = "url('../medias/bombermandead.svg')";
+        controlActive = false;
+        clearInterval(intervalTouch);
+    }
+
+}

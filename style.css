@@ -16,7 +16,6 @@ header {
 }
 
 #map {
-    background: url("../bomberman_js/img/map.png");
     height: 650px;
     width: 950px;
     position: relative;
