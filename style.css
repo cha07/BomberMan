@@ -3,6 +3,12 @@
     padding: 0px;
 }
 
+@font-face {
+	font-family: "hobo";
+    src: url("fichiers/HoboStd.ttf");
+    src: url("fichiers/HoboStd.otf");
+}
+
 body {
     background-color: #1b1b1b;
     display: flex;
@@ -13,6 +19,7 @@ body {
 header {
     position: absolute;
     height: 90px;
+
 }
 
 #map {
@@ -20,12 +27,13 @@ header {
     width: 950px;
     position: relative;
     margin: auto;
+    margin-top: 90px;
 }
 
 h1 {
     color: antiquewhite;
     font-size: 35px;
-    font-family: arial;
+    font-family: hobo;
     font-weight: bold;
     height: 90px;
     color: white;

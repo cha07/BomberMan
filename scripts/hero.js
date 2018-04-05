@@ -35,7 +35,7 @@ function afficherMap() {
                 map.appendChild(wall);
                 wall.style.top = y * 50 + "px";
                 wall.style.left = x * 50 + "px";
-                wall.style.backgroundImage = "url('img/bord.png')";
+                wall.style.backgroundImage = "url('img/bordGif.gif')";
             }
 
             if (grille[y][x] === 2) {
