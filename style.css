@@ -6,31 +6,24 @@
 body {
     display: flex;
     justify-content: center;
+    background: url("../bomberman_js/img/back-bomber.jpg");
 }
 
 header {
-    margin: auto;
     position: absolute;
-}
-
-#cadre {
-    background: url("../bomberman_js/img/cadre.png") no-repeat;
-    height: 650px;
-    width: 950px;
-    position: relative;
-    padding-top: 50px;
-    padding-left: 50px;
-    margin-top: 90px;
+    height: 90px;
 }
 
 #map {
     background: url("../bomberman_js/img/map.png");
-    height: 550px;
-    width: 850px;
+    height: 650px;
+    width: 950px;
     position: relative;
+    margin: auto;
 }
 
 h1 {
+    color: antiquewhite;
     font-size: 35px;
     font-family: arial;
     font-weight: bold;
@@ -39,24 +32,65 @@ h1 {
     align-items: center;
     }
 
+.bord {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+}
+
     #hero {
-        background-image: url("../bomberman_js/img/h-static.png");
+        background-image: url("img/h-static.png");
+        z-index: 10;
         position: absolute;
         width: 50px;
         height: 50px;
+        top: 50px;
+        left: 50px;
     }
 
     #mechante {
+        background-image: url("../bomberman_js/img/morgane.png");
+        z-index: 10;
         position: absolute;
         height: 50px;
         width: 50px;
-        bottom: 0px;
-        right: 0px;
+        bottom: 50px;
+        right: 50px;
     }
 
-    wall {
+    .wall {
         position: absolute;
         width: 50px;
         height: 50px;
         background: no-repeat;
+    }
+
+    .wall-destruct {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: no-repeat;
+    }
+
+    #bomb {
+        z-index: 10;
+        display: none;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-image: url("img/bomb.png");
+    }
+
+    .floor {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        background: no-repeat;
+    }
+
+    .explosion {
+        position: absolute;
+        z-index: 10;
+        height: 50px;
+        width: 50px;
     }
