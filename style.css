@@ -4,6 +4,7 @@
 }
 
 body {
+    background-color: #1b1b1b;
     display: flex;
     justify-content: center;
     background: url("../bomberman_js/img/back-bomber.jpg");
@@ -28,6 +29,7 @@ h1 {
     font-family: arial;
     font-weight: bold;
     height: 90px;
+    color: white;
     display: flex;
     align-items: center;
     }
@@ -50,7 +52,10 @@ h1 {
 
     #mechante {
         background-image: url("../bomberman_js/img/morgane.png");
+<<<<<<< HEAD
         z-index: 10;
+=======
+>>>>>>> bbe5d678ca3d4de748533125a7eafc172609c86d
         position: absolute;
         height: 50px;
         width: 50px;
