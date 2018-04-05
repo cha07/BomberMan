@@ -143,8 +143,8 @@ function boom(){
     var posBombLeft = bomb.offsetLeft / 50;
     var posBombTop = bomb.offsetTop / 50;
     var explosion;
-    
-    if (grille[posBombTop + 1][posBombLeft] != 4 ) {
+
+    if (grille[posBombTop - 1][posBombLeft] == 3 || grille[posBombTop - 1][posBombLeft] == 1) {
     
     explosion = document.createElement("div");
     explosion.setAttribute("class", "explosion");
