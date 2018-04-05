@@ -19,6 +19,12 @@ body {
 header {
     position: absolute;
     height: 90px;
+}
+
+#bordure {
+    background: url("../bomberman_js/img/back-bordure.png") center;
+    height: 740px;
+    width: 1150px;
 
 }
 
