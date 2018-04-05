@@ -13,7 +13,7 @@ body {
     background-color: #1b1b1b;
     display: flex;
     justify-content: center;
-    background: url("../bomberman_js/img/back-bomber.jpg");
+    background: url("../bomberman_js/img/back-bomber.jpg") center;
 }
 
 header {
