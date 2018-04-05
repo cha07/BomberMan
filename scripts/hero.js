@@ -21,7 +21,6 @@ function afficherMap() {
     var floor;
     var bord;
 
-<<<<<<< HEAD
     for (x = 0; x < 19; x++) {
 
         for (y = 0; y < 13; y++) {
@@ -34,11 +33,6 @@ function afficherMap() {
                 wall.style.left = x * 50 + "px";
                 wall.style.backgroundImage = "url('img/bord.png')";
             }
-=======
-    for (x = 0; x < 17; x++) {
-
-        for (y = 0; y < 11; y++) {
->>>>>>> bbe5d678ca3d4de748533125a7eafc172609c86d
 
             if (grille[y][x] === 2) {
                 wall = document.createElement("div");
@@ -65,11 +59,7 @@ function afficherMap() {
                 map.appendChild(floor);
                 floor.style.top = y * 50 + "px";
                 floor.style.left = x * 50 + "px";
-<<<<<<< HEAD
                 floor.style.backgroundImage = "url('img/floor.png')";
-=======
-
->>>>>>> bbe5d678ca3d4de748533125a7eafc172609c86d
             }
         }
     }
@@ -115,11 +105,7 @@ document.addEventListener("keydown", function (e) {
 
             case 37:
                 if (grille[posBlockTop][posBlockLeft - 1] == 1) {
-<<<<<<< HEAD
                     hero.style.left = (posBlockLeft - 1) * 50 + "px";
-=======
-                    hero.style.left = (posBlockLeft - 1) * 50 + "px";  
->>>>>>> bbe5d678ca3d4de748533125a7eafc172609c86d
                 }
                 hero.style.backgroundImage = "url('img/h-g.png')";
                 break;
@@ -128,11 +114,7 @@ document.addEventListener("keydown", function (e) {
                 if (posHero === 0) {
                     bomb.style.left = heroLeft + "px";
                     bomb.style.top = heroTop + "px";
-<<<<<<< HEAD
                     bomb.style.backgroundImage = "url('img/bomb.png')";
-=======
-                    bomb.style.backgroundImage = "url('img/bomb_item.png')";
->>>>>>> bbe5d678ca3d4de748533125a7eafc172609c86d
                     bomb.style.display = "block";
 
                     setTimeout(boom, 2000);
@@ -142,7 +124,6 @@ document.addEventListener("keydown", function (e) {
                 break;
         }
     }
-<<<<<<< HEAD
 });
 
 // bombe qui explose pas x)
@@ -305,6 +286,3 @@ function boom(){
     //         }
     //     }
     // }
-=======
-})
->>>>>>> bbe5d678ca3d4de748533125a7eafc172609c86d
