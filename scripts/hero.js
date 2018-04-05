@@ -7,10 +7,10 @@ var grille = [
     [4, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4],
     [4, 1, 2, 1, 2, 3, 2, 3, 2, 3, 2, 3, 2, 1, 2, 3, 2, 3, 4],
     [4, 1, 1, 3, 1, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4],
-    [4, 1, 2, 3, 2, 3, 2, 3, 2, 1, 2, 3, 2, 1, 2, 1, 2, 3, 4],
-    [4, 1, 1, 3, 1, 3, 1, 3, 3, 3, 3, 3, 1, 1, 1, 3, 3, 3, 4],
-    [4, 3, 2, 3, 2, 1, 2, 3, 2, 1, 2, 1, 2, 1, 2, 1, 2, 3, 4],
-    [4, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 4],
+    [4, 1, 2, 1, 2, 3, 2, 3, 2, 1, 2, 3, 2, 1, 2, 1, 2, 3, 4],
+    [4, 1, 1, 1, 1, 3, 1, 3, 3, 3, 3, 3, 1, 1, 1, 3, 3, 3, 4],
+    [4, 3, 2, 1, 2, 1, 2, 3, 2, 1, 2, 1, 2, 1, 2, 1, 2, 3, 4],
+    [4, 3, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 4],
     [4, 3, 2, 1, 2, 1, 2, 3, 2, 1, 2, 3, 2, 1, 2, 1, 2, 1, 4],
     [4, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 4],
     [4, 3, 2, 1, 2, 1, 2, 3, 2, 3, 2, 3, 2, 1, 2, 1, 2, 1, 4],
@@ -92,6 +92,7 @@ document.addEventListener("keydown", function (e) {
                     hero.style.top = (posBlockTop - 1) * 50 + "px";
                 }
                 hero.style.backgroundImage = "url('img/h-top.png')";
+                heroDie()
                 break;
 
             case 39:
@@ -99,6 +100,7 @@ document.addEventListener("keydown", function (e) {
                     hero.style.left = (posBlockLeft + 1) * 50 + "px";
                 }
                 hero.style.backgroundImage = "url('img/h-d.png')";
+                heroDie()
                 break;
 
             case 40:
@@ -107,6 +109,7 @@ document.addEventListener("keydown", function (e) {
                     hero.style.top = (posBlockTop + 1) * 50 + "px";
                 }
                 hero.style.backgroundImage = "url('img/h.png')";
+                heroDie()
                 break;
 
             case 37:
@@ -114,6 +117,7 @@ document.addEventListener("keydown", function (e) {
                     hero.style.left = (posBlockLeft - 1) * 50 + "px";
                 }
                 hero.style.backgroundImage = "url('img/h-g.png')";
+                heroDie()
                 break;
 
             case 32:
@@ -132,7 +136,7 @@ document.addEventListener("keydown", function (e) {
     }
 });
 
-// déplacement Ennemie --------------------------------------------
+// déplacement Morgane
 const badgirl = document.querySelector("#mechante");
 
 function random() {
@@ -179,7 +183,7 @@ function random() {
     }
 } // FIN IF ---------------------------------------------------------
 
-setInterval(random, 300);
+setInterval(random, 50);
 
 //Tuer l'ennemie 
 
@@ -305,27 +309,46 @@ function boom(){
             }
         }
     }
+//Tuer l'ennemie 
 
-    var lifeCount = 3;
-var audio5 = new Audio('../medias/gameover.mp3');
-
-function touchMonster(e) {
-    var posHeroLeft = bomberman.offsetLeft / 50;
-    var posHeroTop = bomberman.offsetTop / 50;
-    var posBadgirlLeft = badgirl.offsetLeft / 50;
-    var posBadgirlTop = badgirl.offsetTop / 50;
-
-    if (posHeroTop == posBadgirlTop && posHeroLeft == posBadgirlLeft) {
-        lifeCount = lifeCount - 1;
-        document.getElementsByClassName('heart' + lifeCount)[0].style.display = "none";
+    function killMorgane(explosion) {
+        var posBadgirlLeft =  badgirl.offsetLeft;
+        var posBadgirlTop = badgirl.offsetTop;
+        var posBombLeft = bomb.offsetLeft;
+        var posBombTop = bomb.offsetTop;
+        var explosionLeft = explosion.offsetLeft;
+        
+        var element = document.getElementsByClassName('explosion');
+        for (var i = element.length - 1; i >= 0; i--) {
+    
+            if ((posBombLeft === posBadgirlLeft) && (posBombTop === posBadgirlTop)) {
+    
+                badgirl.style.display = "none";
+                playerwin.style.display = "block";
+                
+    
+            } else if ((explosion.offsetTop === posBadgirlTop) && (explosion.offsetLeft === posBadgirlLeft)) {
+    
+                badgirl.style.display = "none";
+                playerwin.style.display = "block";
+            }
+        }
     }
 
-    if (lifeCount == 0) {
-        gameover.style.display = "block";
-        clearInterval(refreshIntervalId);
-        hero.style.backgroundImage = "url('../medias/bombermandead.svg')";
-        controlActive = false;
-        clearInterval(intervalTouch);
-    }
+    function heroDie () {
 
-}
+        var posHeroLeft = hero.offsetLeft / 50;
+        var posHeroTop = hero.offsetTop / 50;
+        var posBadgirlLeft = badgirl.offsetLeft / 50;
+        var posBadgirlTop = badgirl.offsetTop / 50;
+    
+        if (posHeroTop == posBadgirlTop && posHeroLeft == posBadgirlLeft) {
+    
+            hero.style.display = "none";
+            playerlose.style.display = "block";
+    
+            // return true
+        }
+    
+        // return false
+    }
