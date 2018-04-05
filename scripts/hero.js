@@ -35,7 +35,7 @@ function afficherMap() {
                 map.appendChild(wall);
                 wall.style.top = y * 50 + "px";
                 wall.style.left = x * 50 + "px";
-                wall.style.backgroundImage = "url('img/bord.png')";
+                wall.style.backgroundImage = "url('img/bordGif.gif')";
             }
 
             if (grille[y][x] === 2) {
@@ -68,6 +68,8 @@ function afficherMap() {
         }
     }
 }
+
+// deplacement hero ----------------------------------------------
 
 afficherMap();
 
@@ -179,11 +181,37 @@ function random() {
 
         } 
     }
-} // FIN IF
+} // FIN IF ---------------------------------------------------------
 
 setInterval(random, 50);
 
-// bombe qui explose pas x)
+//Tuer l'ennemie 
+
+function killMorgane(explosion) {
+    var posBadgirlLeft =  badgirl.offsetLeft;
+    var posBadgirlTop = badgirl.offsetTop;
+    var posBombLeft = bomb.offsetLeft;
+    var posBombTop = bomb.offsetTop;
+    var explosionLeft = explosion.offsetLeft;
+    
+    var element = document.getElementsByClassName('explosion');
+    for (var i = element.length - 1; i >= 0; i--) {
+
+        if ((posBombLeft === posBadgirlLeft) && (posBombTop === posBadgirlTop)) {
+
+            badgirl.style.display = "none";
+            playerwin.style.display = "block";
+            
+
+        } else if ((explosion.offsetTop === posBadgirlTop) && (explosion.offsetLeft === posBadgirlLeft)) {
+
+            badgirl.style.display = "none";
+            playerwin.style.display = "block";
+        }
+    }
+}
+
+// bombe ------------------------------------------------------------
 
 function suppexplosion() {
 
@@ -255,6 +283,8 @@ function boom(){
     
     }
 }
+
+// explosion mur bois -----------------------------------------------------------
 
     function breakBlock(explosion) {
 
