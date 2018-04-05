@@ -114,7 +114,7 @@ document.addEventListener("keydown", function (e) {
                 if (posHero === 0) {
                     bomb.style.left = heroLeft + "px";
                     bomb.style.top = heroTop + "px";
-                    bomb.style.backgroundImage = "url('img/bomb.png')";
+                    bomb.style.backgroundImage = "url('img/bomb_item.png')";
                     bomb.style.display = "block";
 
                     setTimeout(boom, 2000);
@@ -125,6 +125,52 @@ document.addEventListener("keydown", function (e) {
         }
     }
 });
+
+// déplacement Ennemie
+const badgirl = document.querySelector("#mechante");
+
+function random() {
+    var min = 1;
+    var max = 4;
+    var dir = Math.floor(Math.random() * Math.floor(max));
+    console.log(dir);
+    var posBlockLeft = badgirl.offsetLeft / 50;
+    var posBlockTop = badgirl.offsetTop / 50;
+
+    if (dir == 0) {     // ---------- Droite ---------
+        if (grille[posBlockTop][posBlockLeft + 1] == 1) {
+            badgirl.style.left = badgirl.offsetLeft + 50 + "px";
+            badgirl.style.backgroundImage = "url('img/m-d.png')";
+            badgirl.style.backgroundSize = "50px";
+
+        } 
+    } else if (dir == 1) {        // --------- Gauche ----------
+        if (grille[posBlockTop][posBlockLeft - 1] == 1) {
+            badgirl.style.left = badgirl.offsetLeft - 50 + "px";
+            badgirl.style.backgroundImage = "url('img/m-g.png')";
+            badgirl.style.backgroundSize = "50px";
+
+
+        } 
+
+    } else if (dir == 3) {   // --------- Bas -------------- 
+        if (grille[posBlockTop + 1][posBlockLeft] == 1) {
+            badgirl.style.top = badgirl.offsetTop + 50 + "px";
+            badgirl.style.backgroundImage = "url('img/m-bot.png')";
+            badgirl.style.backgroundSize = "50px";
+        }
+
+    } else if (dir == 2) {   // --------- Haut ----------
+        if (grille[posBlockTop - 1][posBlockLeft] == 1) { console.log(grille[posBlockTop]);
+        
+            badgirl.style.top = badgirl.offsetTop - 50 + "px";
+            badgirl.style.backgroundImage = "url('img/m-top.png')";
+            badgirl.style.backgroundSize = "50px";
+        } 
+    }
+} // FIN IF
+
+setInterval(random, 1500);
 
 // bombe qui explose pas x)
 
