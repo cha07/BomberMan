@@ -9,9 +9,6 @@
         <title>Bomberman</title>
     </head>
     <body>
-        <header>
-            <h1>BOMBERMAN G3</h1>
-        </header>
         <section id="map">
             <div id="hero"></div>
             <div id="bomb"></div>
@@ -20,7 +17,15 @@
             <div class="floor"></div>
             <div class="wall-destruct"></div>
             <div id="mechante"></div>
-            </section>
+
+        </section>
+        <div id="playerwin"><h1>Bravo, Vous avez Gagné !</h1>
+            <a class="refresh" href="index.html">REJOUER</a>
+        </div>
+
+        <div id="playerlose"><h1>Vous avez perdu !</h1>
+            <a class="refresh" href="index.html">REJOUER</a>
+        </div>
         <script src="scripts/hero.js"></script>
     </body>
 </html>
