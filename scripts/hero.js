@@ -121,8 +121,8 @@ document.addEventListener("keydown", function (e) {
                     bomb.style.backgroundImage = "url('img/bomb.png')";
                     bomb.style.display = "block";
 
-                    setTimeout(boom, 2000);
-                    setTimeout(suppexplosion, 2500);
+                    setTimeout(boom, 1500);
+                    setTimeout(suppexplosion, 2000);
 
                 }
                 break;
@@ -147,6 +147,7 @@ function random() {
             badgirl.style.backgroundImage = "url('img/m-d.png')";
             badgirl.style.backgroundSize = "50px";
 
+
         } 
     } else if (dir == 1) {        // --------- Gauche ----------
         if (grille[posBlockTop][posBlockLeft - 1] == 1) {
@@ -162,6 +163,7 @@ function random() {
             badgirl.style.top = badgirl.offsetTop + 50 + "px";
             badgirl.style.backgroundImage = "url('img/m-bot.png')";
             badgirl.style.backgroundSize = "50px";
+
         }
 
     } else if (dir == 2) {   // --------- Haut ----------
@@ -170,6 +172,7 @@ function random() {
             badgirl.style.top = badgirl.offsetTop - 50 + "px";
             badgirl.style.backgroundImage = "url('img/m-top.png')";
             badgirl.style.backgroundSize = "50px";
+
         } 
     }
 } // FIN IF
@@ -199,7 +202,7 @@ function boom(){
     explosion = document.createElement("div");
     explosion.setAttribute("class", "explosion");
     map.appendChild(explosion);
-    explosion.style.top = (posBombTop + 1) * 50 + "px";
+    explosion.style.top = (posBombTop - 1) * 50 + "px";
     explosion.style.left = posBombLeft * 50 + "px";
     bomb.style.backgroundImage = "url('img/bombex.png')";
     explosion.style.backgroundImage = "url('img/bombex2.png')";
