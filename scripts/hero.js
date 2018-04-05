@@ -1,3 +1,7 @@
+var hero = document.querySelector('#hero');
+var bomb = document.querySelector("#bomb");
+var map = document.querySelector('#map');
+
 var grille = [
     [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
     [4, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4],
@@ -118,7 +122,7 @@ document.addEventListener("keydown", function (e) {
                     bomb.style.display = "block";
 
                     setTimeout(boom, 2000);
-                    setTimeout(suppexplosion, 1000);
+                    setTimeout(suppexplosion, 2500);
 
                 }
                 break;
@@ -152,34 +156,23 @@ function boom(){
     explosion.style.top = (posBombTop + 1) * 50 + "px";
     explosion.style.left = posBombLeft * 50 + "px";
     bomb.style.backgroundImage = "url('img/bombex.png')";
-    explosion.style.backgroundImage = "url('img/bombex.png')";
+    explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
-    
-    } if (grille[posBombTop - 1][posBombLeft] = 3 ) {
+    breakBlock(explosion);
+
+    } if (grille[posBombTop + 1][posBombLeft] == 3 || grille[posBombTop + 1][posBombLeft] == 1) {
     
     explosion = document.createElement("div");
     explosion.setAttribute("class", "explosion");
     map.appendChild(explosion);
-    explosion.style.top = (posBombTop - 1) * 50 + "px";
+    explosion.style.top = (posBombTop + 1) * 50 + "px";
     explosion.style.left = posBombLeft * 50 + "px";
     bomb.style.backgroundImage = "url('img/bombex.png')";
-    explosion.style.backgroundImage = "url('img/bombex.png')";
+    explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    breakBlock(explosion);
     
-    } if (grille[posBombTop][posBombLeft + 1] = 3 ) {
-    
-    explosion = document.createElement("div");
-    explosion.setAttribute("class", "explosion");
-    map.appendChild(explosion);
-    explosion.style.top = posBombTop * 50 + "px";
-    explosion.style.left = (posBombLeft + 1) * 50 + "px";
-    bomb.style.backgroundImage = "url('img/bombex.png')";
-    explosion.style.backgroundImage = "url('img/bombex.png')";
-    explosion.style.backgroundSize = "50px";
-    
-    
-    
-    } if (grille[posBombTop][posBombLeft - 1] = 3 ) {
+    } if (grille[posBombTop][posBombLeft - 1] == 3 || grille[posBombTop][posBombLeft - 1] == 1) {
     
     explosion = document.createElement("div");
     explosion.setAttribute("class", "explosion");
@@ -187,102 +180,45 @@ function boom(){
     explosion.style.top = posBombTop * 50 + "px";
     explosion.style.left = (posBombLeft - 1) * 50 + "px";
     bomb.style.backgroundImage = "url('img/bombex.png')";
-    explosion.style.backgroundImage = "url('img/bombex.png')";
+    explosion.style.backgroundImage = "url('img/bombex2.png')";
     explosion.style.backgroundSize = "50px";
+    breakBlock(explosion);
+    
+    } if (grille[posBombTop][posBombLeft + 1] == 3 || grille[posBombTop][posBombLeft + 1] == 1) {
+    
+    explosion = document.createElement("div");
+    explosion.setAttribute("class", "explosion");
+    map.appendChild(explosion);
+    explosion.style.top = posBombTop * 50 + "px";
+    explosion.style.left = (posBombLeft + 1) * 50 + "px";
+    bomb.style.backgroundImage = "url('img/bombex.png')";
+    explosion.style.backgroundImage = "url('img/bombex2.png')";
+    explosion.style.backgroundSize = "50px";
+    breakBlock(explosion);
     
     }
+}
+
+    function breakBlock(explosion) {
+
+        var element = document.getElementsByClassName('wall-destruct');
+        var wallDestructLeft = 0;
+        var wallDestructTop = 0;
+    
+        for (var i = element.length - 1; i >= 0; i--) {
+    
+            wallDestructLeft = element[i].offsetLeft / 50;
+            wallDestructTop = element[i].offsetTop / 50;
+    
+            if ((explosion.offsetTop / 50 == wallDestructTop) && (explosion.offsetLeft / 50 == wallDestructLeft)) {
+    
+                element[i].style.backgroundImage = "url('img/floor2.png')";
+    
+                if (grille[wallDestructTop][wallDestructLeft] == 3) {
+                    grille[wallDestructTop][wallDestructLeft] = 1;
+    
+                }
+    
+            }
+        }
     }
-
-    // function exploseTheBomb(wallDestruct) {
-
-    //     var posBombLeft = bomb.offsetLeft / 50;
-    //     var posBombTop = bomb.offsetTop / 50;
-    //     var x, y = 0;
-    //     var explosion;
-    
-    //     var posMonsterLeft = monster.offsetLeft / 50;
-    //     var posMonsterTop = monster.offsetTop / 50;
-    
-    //     audio2.play();
-    
-    //     if (grille[posBombTop - 1][posBombLeft] == 3 || grille[posBombTop - 1][posBombLeft] == 1) {
-    
-    //         explosion = document.createElement("div");
-    //         explosion.setAttribute("class", "explosion");
-    //         map.appendChild(explosion);
-    //         explosion.style.top = (posBombTop - 1) * 50 + "px";
-    //         explosion.style.left = posBombLeft * 50 + "px";
-    //         bomb.style.backgroundImage = "url('img/bomb.png')";
-    //         explosion.style.backgroundImage = "url('img/carre-3.png')";
-    
-    //         breakMonster(explosion);
-    //         breakBlock(explosion);
-    //     }
-    
-    //     if (grille[posBombTop + 1][posBombLeft] == 3 || grille[posBombTop + 1][posBombLeft] == 1) {
-    
-    //         explosion = document.createElement("div");
-    //         explosion.setAttribute("class", "explosion");
-    //         map.appendChild(explosion);
-    //         explosion.style.top = (posBombTop + 1) * 50 + "px";
-    //         explosion.style.left = posBombLeft * 50 + "px";
-    //         bomb.style.backgroundImage = "url('img/bomb.png')";
-    //         explosion.style.backgroundImage = "url('img/carre-3.png')";
-    //         breakMonster(explosion);
-    //         breakBlock(explosion);
-    //     }
-    
-    //     if (grille[posBombTop][posBombLeft + 1] == 3 || grille[posBombTop][posBombLeft + 1] == 1) {
-    
-    //         explosion = document.createElement("div");
-    //         explosion.setAttribute("class", "explosion");
-    //         map.appendChild(explosion);
-    //         explosion.style.top = posBombTop * 50 + "px";
-    //         explosion.style.left = (posBombLeft + 1) * 50 + "px";
-    //         bomb.style.backgroundImage = "url('img/bomb.png')";
-    //         explosion.style.backgroundImage = "url('img/carre-3.png')";
-    //         breakMonster(explosion);
-    //         breakBlock(explosion);
-    //     }
-    
-    //     if (grille[posBombTop][posBombLeft - 1] == 3 || grille[posBombTop][posBombLeft - 1] == 1) {
-    
-    //         explosion = document.createElement("div");
-    //         explosion.setAttribute("class", "explosion");
-    //         map.appendChild(explosion);
-    //         explosion.style.top = posBombTop * 50 + "px";
-    //         explosion.style.left = (posBombLeft - 1) * 50 + "px";
-    //         bomb.style.backgroundImage = "url('img/bomb.png')";
-    //         explosion.style.backgroundImage = "url('img/carre-3.png')";
-    //         breakMonster(explosion);
-    //         breakBlock(explosion);
-    
-    //     } else {
-    //         bomb.style.backgroundImage = "url('img/bomb.png')";
-    
-    //     }
-    // }
-
-    // function breakBlock(explosion) {
-
-    //     var element = document.getElementsByClassName('wall-destruct');
-    //     var wallDestructLeft = 0;
-    //     var wallDestructTop = 0;
-    
-    //     for (var i = element.length - 1; i >= 0; i--) {
-    
-    //         wallDestructLeft = element[i].offsetLeft / 50;
-    //         wallDestructTop = element[i].offsetTop / 50;
-    
-    //         if ((explosion.offsetTop / 50 == wallDestructTop) && (explosion.offsetLeft / 50 == wallDestructLeft)) {
-    
-    //             element[i].style.backgroundImage = "url('../medias/grass.svg')";
-    
-    //             if (grille[wallDestructTop][wallDestructLeft] == 3) {
-    //                 grille[wallDestructTop][wallDestructLeft] = 1;
-    
-    //             }
-    
-    //         }
-    //     }
-    // }
