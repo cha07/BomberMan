@@ -170,7 +170,7 @@ function random() {
     }
 } // FIN IF
 
-setInterval(random, 1500);
+setInterval(random, 300);
 
 // bombe qui explose pas x)
 
