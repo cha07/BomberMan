@@ -118,7 +118,7 @@ document.addEventListener("keydown", function (e) {
                 if (posHero === 0) {
                     bomb.style.left = heroLeft + "px";
                     bomb.style.top = heroTop + "px";
-                    bomb.style.backgroundImage = "url('img/bomb_item.png')";
+                    bomb.style.backgroundImage = "url('img/bomb.png')";
                     bomb.style.display = "block";
 
                     setTimeout(boom, 2000);
